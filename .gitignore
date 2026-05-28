@@ -1,2 +1,4 @@
 data/historical_results.csv
 data/goalscorers.csv
+src/__pycache__/
+*.pyc
