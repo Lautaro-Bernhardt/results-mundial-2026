@@ -186,6 +186,69 @@ class HostBoostProfile(BaseProfile):
         return _clamp(*win_probabilities(elo_a, elo_b, neutral))
 
 
+class PoissonProfile(BaseProfile):
+    """Dixon-Coles bivariate Poisson goal model."""
+    name = "poisson"
+
+    def __init__(self, results_df: pd.DataFrame, teams_df: pd.DataFrame):
+        from poisson import compute_team_strengths, match_proba as _poisson_match, calibrate_rho
+        self._match_fn = _poisson_match
+        strengths, self.global_avg = compute_team_strengths(
+            results_df, teams_df["team"].tolist()
+        )
+        # Map canonical name to (attack, defense) — try both canonical and historical names
+        self.strengths = {}
+        for _, row in teams_df.iterrows():
+            canonical = row["team"]
+            hist = HISTORICAL_NAME_MAP.get(canonical, canonical)
+            s = strengths.get(canonical, strengths.get(hist, None))
+            if s:
+                self.strengths[canonical] = s
+            else:
+                self.strengths[canonical] = {"attack": 1.0, "defense": 1.0, "n_matches": 0}
+        # Calibrate rho using recent WC matches only
+        self.rho = calibrate_rho(results_df)
+
+    def match_proba(self, team_a: str, team_b: str, neutral: bool = True) -> tuple:
+        sa = self.strengths.get(team_a, {"attack": 1.0, "defense": 1.0})
+        sb = self.strengths.get(team_b, {"attack": 1.0, "defense": 1.0})
+        p = self._match_fn(
+            sa["attack"], sb["defense"],
+            sb["attack"], sa["defense"],
+            self.global_avg, rho=self.rho
+        )
+        return _clamp(*p)
+
+
+class MarketOddsProfile(BaseProfile):
+    """Uses betting market outright winner implied probabilities as team strength proxy."""
+    name = "market_odds"
+
+    def __init__(self, odds_path: str = None):
+        if odds_path is None:
+            odds_path = os.path.join(
+                os.path.dirname(os.path.dirname(__file__)),
+                "data", "market_odds_2026.csv"
+            )
+        self.implied_probs = {}
+        if os.path.exists(odds_path):
+            df = pd.read_csv(odds_path)
+            for _, row in df.iterrows():
+                self.implied_probs[row["team"]] = float(row["implied_prob_normalized"])
+        # Convert implied probs to pseudo-ELO scale for match probability calculation
+        # log odds of winning the tournament ≈ log odds of winning each match
+        # We use: pseudo_elo = 400 * log10(p / (1-p)) + 1500 (logistic transform)
+        self.pseudo_elos = {}
+        for team, p in self.implied_probs.items():
+            p_clamped = max(0.001, min(0.999, p))
+            self.pseudo_elos[team] = 400 * math.log10(p_clamped / (1 - p_clamped)) + 1500
+
+    def match_proba(self, team_a: str, team_b: str, neutral: bool = True) -> tuple:
+        elo_a = self.pseudo_elos.get(team_a, 1500)
+        elo_b = self.pseudo_elos.get(team_b, 1500)
+        return _clamp(*win_probabilities(elo_a, elo_b, neutral=True))
+
+
 class CombinedProfile(BaseProfile):
     """
     Weighted blend of all profiles.
@@ -199,16 +262,19 @@ class CombinedProfile(BaseProfile):
 
     # Default weights (used when no optimized weights are available)
     DEFAULT_WEIGHTS = {
-        "elo":        0.30,
-        "fifa_rank":  0.20,
-        "form":       0.25,
-        "tournament": 0.15,
-        "host_boost": 0.10,
+        "elo":         0.00,   # overridden by optimizer
+        "fifa_rank":   0.10,
+        "form":        0.30,
+        "tournament":  0.10,
+        "host_boost":  0.05,
+        "poisson":     0.30,
+        "market_odds": 0.15,
     }
 
     # Fixed share reserved for non-backtestable profiles
-    _FIFA_RANK_SHARE = 0.15
-    _HOST_BOOST_SHARE = 0.08
+    _FIFA_RANK_SHARE = 0.10
+    _HOST_BOOST_SHARE = 0.05
+    _MARKET_ODDS_SHARE = 0.15
 
     def __init__(self, profiles: dict, weights_path: str = OPTIMAL_WEIGHTS_PATH):
         self.profiles = profiles
@@ -257,13 +323,17 @@ def build_all_profiles(teams_df: pd.DataFrame, results_df: pd.DataFrame,
     form_p = FormProfile(results_df, teams_df, elo_ratings)
     tournament_p = TournamentProfile(results_df, teams_df, elo_ratings)
     host_p = HostBoostProfile(elo_ratings, teams_df)
+    poisson_p = PoissonProfile(results_df, teams_df)
+    market_p = MarketOddsProfile()
 
     base_profiles = {
-        "fifa_rank":  fifa,
-        "elo":        elo_p,
-        "form":       form_p,
-        "tournament": tournament_p,
-        "host_boost": host_p,
+        "fifa_rank":   fifa,
+        "elo":         elo_p,
+        "form":        form_p,
+        "tournament":  tournament_p,
+        "host_boost":  host_p,
+        "poisson":     poisson_p,
+        "market_odds": market_p,
     }
     combined = CombinedProfile(base_profiles)
     return {**base_profiles, "combined": combined}

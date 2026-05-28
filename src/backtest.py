@@ -25,6 +25,7 @@ from scipy.optimize import minimize, differential_evolution
 
 sys.path.insert(0, os.path.dirname(__file__))
 from elo import calculate_elo, win_probabilities, get_recent_form, get_wc_performance
+from poisson import compute_team_strengths, match_proba as poisson_match, calibrate_rho
 
 # --- Configuration -----------------------------------------------------------
 
@@ -185,6 +186,17 @@ def precompute_predictions(results_df: pd.DataFrame) -> dict:
                 "p_tournament": np.array(p_tourn_raw),
             })
 
+        # Compute Poisson predictions for this year's matches
+        all_teams_in_year = list(set(m['home'] for m in matches) | set(m['away'] for m in matches))
+        strengths, global_avg = compute_team_strengths(train_df, all_teams_in_year)
+        rho = calibrate_rho(train_df)
+
+        for m in matches:
+            sa = strengths.get(m['home'], {'attack': 1.0, 'defense': 1.0})
+            sb = strengths.get(m['away'], {'attack': 1.0, 'defense': 1.0})
+            p = poisson_match(sa['attack'], sb['defense'], sb['attack'], sa['defense'], global_avg, rho=rho)
+            m['p_poisson'] = np.array(p)
+
         elapsed = time.time() - t0
         print(f"    {year}: {len(train_df):,} train / {len(test_df)} WC matches  "
               f"({elapsed:.1f}s)")
@@ -251,6 +263,7 @@ def evaluate_all(precomputed: dict, optimal_weights: list) -> pd.DataFrame:
         "elo":                lambda m: tuple(m["p_elo"]),
         "form":               lambda m: tuple(m["p_form"]),
         "tournament":         lambda m: tuple(m["p_tournament"]),
+        "poisson":            lambda m: tuple(m.get("p_poisson", m["p_elo"])),
         "combined_default":   lambda m: _weighted_probs(m, DEFAULT_WEIGHTS),
         "combined_optimized": lambda m: _weighted_probs(m, optimal_weights),
     }
