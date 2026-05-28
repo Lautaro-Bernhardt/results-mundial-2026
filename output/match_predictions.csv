@@ -1,0 +1,433 @@
+group,matchday,home_team,away_team,model,p_home_win,p_draw,p_away_win
+A,1,Mexico,South Africa,fifa_rank,0.7658,0.1503,0.084
+A,1,Mexico,South Africa,elo,0.7208,0.1665,0.1127
+A,1,Mexico,South Africa,form,0.7055,0.1718,0.1227
+A,1,Mexico,South Africa,tournament,0.7187,0.1672,0.114
+A,1,Mexico,South Africa,host_boost,0.7744,0.147,0.0786
+A,1,Mexico,South Africa,combined,0.731,0.1627,0.1062
+A,1,Korea Republic,Czechia,fifa_rank,0.5304,0.2272,0.2424
+A,1,Korea Republic,Czechia,elo,0.5741,0.2136,0.2122
+A,1,Korea Republic,Czechia,form,0.6072,0.2034,0.1894
+A,1,Korea Republic,Czechia,tournament,0.5611,0.2177,0.2212
+A,1,Korea Republic,Czechia,host_boost,0.5741,0.2136,0.2122
+A,1,Korea Republic,Czechia,combined,0.5717,0.2144,0.2139
+A,2,Mexico,Korea Republic,fifa_rank,0.4806,0.2429,0.2766
+A,2,Mexico,Korea Republic,elo,0.4084,0.2667,0.3248
+A,2,Mexico,Korea Republic,form,0.3763,0.2781,0.3456
+A,2,Mexico,Korea Republic,tournament,0.4412,0.2557,0.3032
+A,2,Mexico,Korea Republic,host_boost,0.5042,0.2354,0.2604
+A,2,Mexico,Korea Republic,combined,0.4293,0.26,0.3107
+A,2,South Africa,Czechia,fifa_rank,0.2291,0.2212,0.5496
+A,2,South Africa,Czechia,elo,0.2648,0.2374,0.4978
+A,2,South Africa,Czechia,form,0.2846,0.2467,0.4687
+A,2,South Africa,Czechia,tournament,0.2791,0.2441,0.4768
+A,2,South Africa,Czechia,host_boost,0.2648,0.2374,0.4978
+A,2,South Africa,Czechia,combined,0.2648,0.2375,0.4978
+A,3,Mexico,Czechia,fifa_rank,0.6385,0.1936,0.1679
+A,3,Mexico,Czechia,elo,0.6183,0.1999,0.1818
+A,3,Mexico,Czechia,form,0.6231,0.1984,0.1785
+A,3,Mexico,Czechia,tournament,0.6332,0.1953,0.1716
+A,3,Mexico,Czechia,host_boost,0.6915,0.1764,0.132
+A,3,Mexico,Czechia,combined,0.6331,0.1953,0.1717
+A,3,South Africa,Korea Republic,fifa_rank,0.1318,0.1764,0.6918
+A,3,South Africa,Korea Republic,elo,0.1351,0.178,0.687
+A,3,South Africa,Korea Republic,form,0.1312,0.176,0.6928
+A,3,South Africa,Korea Republic,tournament,0.1526,0.1864,0.661
+A,3,South Africa,Korea Republic,host_boost,0.1351,0.178,0.687
+A,3,South Africa,Korea Republic,combined,0.1361,0.1784,0.6855
+B,1,Canada,Switzerland,fifa_rank,0.2357,0.2242,0.5401
+B,1,Canada,Switzerland,elo,0.3147,0.2614,0.4239
+B,1,Canada,Switzerland,form,0.3324,0.2708,0.3968
+B,1,Canada,Switzerland,tournament,0.2122,0.2136,0.5742
+B,1,Canada,Switzerland,host_boost,0.3871,0.2742,0.3387
+B,1,Canada,Switzerland,combined,0.2952,0.2504,0.4544
+B,1,Qatar,Bosnia and Herzegovina,fifa_rank,0.3511,0.2812,0.3677
+B,1,Qatar,Bosnia and Herzegovina,elo,0.3431,0.2767,0.3802
+B,1,Qatar,Bosnia and Herzegovina,form,0.3303,0.2696,0.4001
+B,1,Qatar,Bosnia and Herzegovina,tournament,0.2437,0.2278,0.5285
+B,1,Qatar,Bosnia and Herzegovina,host_boost,0.3431,0.2767,0.3802
+B,1,Qatar,Bosnia and Herzegovina,combined,0.3266,0.2685,0.4049
+B,2,Canada,Qatar,fifa_rank,0.6638,0.1855,0.1507
+B,2,Canada,Qatar,elo,0.6618,0.1862,0.152
+B,2,Canada,Qatar,form,0.7229,0.1658,0.1113
+B,2,Canada,Qatar,tournament,0.6698,0.1836,0.1466
+B,2,Canada,Qatar,host_boost,0.7272,0.1643,0.1085
+B,2,Canada,Qatar,combined,0.6852,0.1784,0.1364
+B,2,Switzerland,Bosnia and Herzegovina,fifa_rank,0.772,0.1479,0.0801
+B,2,Switzerland,Bosnia and Herzegovina,elo,0.6931,0.1759,0.131
+B,2,Switzerland,Bosnia and Herzegovina,form,0.7209,0.1665,0.1126
+B,2,Switzerland,Bosnia and Herzegovina,tournament,0.7042,0.1722,0.1236
+B,2,Switzerland,Bosnia and Herzegovina,host_boost,0.6931,0.1759,0.131
+B,2,Switzerland,Bosnia and Herzegovina,combined,0.7175,0.1674,0.1151
+B,3,Canada,Bosnia and Herzegovina,fifa_rank,0.6561,0.188,0.1559
+B,3,Canada,Bosnia and Herzegovina,elo,0.6442,0.1918,0.164
+B,3,Canada,Bosnia and Herzegovina,form,0.6951,0.1753,0.1297
+B,3,Canada,Bosnia and Herzegovina,tournament,0.5223,0.2297,0.248
+B,3,Canada,Bosnia and Herzegovina,host_boost,0.7129,0.1692,0.1178
+B,3,Canada,Bosnia and Herzegovina,combined,0.6479,0.1903,0.1618
+B,3,Switzerland,Qatar,fifa_rank,0.7771,0.1459,0.077
+B,3,Switzerland,Qatar,elo,0.7084,0.1708,0.1208
+B,3,Switzerland,Qatar,form,0.7462,0.1575,0.0962
+B,3,Switzerland,Qatar,tournament,0.7978,0.1376,0.0646
+B,3,Switzerland,Qatar,host_boost,0.7084,0.1708,0.1208
+B,3,Switzerland,Qatar,combined,0.745,0.1575,0.0975
+C,1,Brazil,Morocco,fifa_rank,0.5107,0.2333,0.256
+C,1,Brazil,Morocco,elo,0.4099,0.2662,0.3239
+C,1,Brazil,Morocco,form,0.335,0.2722,0.3928
+C,1,Brazil,Morocco,tournament,0.5174,0.2312,0.2514
+C,1,Brazil,Morocco,host_boost,0.4099,0.2662,0.3239
+C,1,Brazil,Morocco,combined,0.4275,0.2559,0.3167
+C,1,Haiti,Scotland,fifa_rank,0.1366,0.1787,0.6847
+C,1,Haiti,Scotland,elo,0.2631,0.2366,0.5002
+C,1,Haiti,Scotland,form,0.3049,0.2565,0.4385
+C,1,Haiti,Scotland,tournament,0.1495,0.185,0.6656
+C,1,Haiti,Scotland,host_boost,0.2847,0.2467,0.4686
+C,1,Haiti,Scotland,combined,0.2334,0.2233,0.5433
+C,2,Brazil,Haiti,fifa_rank,0.8775,0.0994,0.0231
+C,2,Brazil,Haiti,elo,0.6976,0.1744,0.1279
+C,2,Brazil,Haiti,form,0.6705,0.1834,0.1461
+C,2,Brazil,Haiti,tournament,0.8573,0.1103,0.0323
+C,2,Brazil,Haiti,host_boost,0.6752,0.1818,0.143
+C,2,Brazil,Haiti,combined,0.7485,0.1528,0.0987
+C,2,Morocco,Scotland,fifa_rank,0.6385,0.1936,0.1679
+C,2,Morocco,Scotland,elo,0.5378,0.2249,0.2373
+C,2,Morocco,Scotland,form,0.6355,0.1945,0.1699
+C,2,Morocco,Scotland,tournament,0.5874,0.2095,0.2031
+C,2,Morocco,Scotland,host_boost,0.5378,0.2249,0.2373
+C,2,Morocco,Scotland,combined,0.5898,0.2087,0.2014
+C,3,Brazil,Scotland,fifa_rank,0.7435,0.1585,0.098
+C,3,Brazil,Scotland,elo,0.5857,0.2101,0.2042
+C,3,Brazil,Scotland,form,0.6063,0.2037,0.19
+C,3,Brazil,Scotland,tournament,0.7106,0.17,0.1194
+C,3,Brazil,Scotland,host_boost,0.5857,0.2101,0.2042
+C,3,Brazil,Scotland,combined,0.6411,0.1922,0.1667
+C,3,Morocco,Haiti,fifa_rank,0.8348,0.1214,0.0438
+C,3,Morocco,Haiti,elo,0.6601,0.1867,0.1532
+C,3,Morocco,Haiti,form,0.6956,0.1751,0.1293
+C,3,Morocco,Haiti,tournament,0.8018,0.136,0.0623
+C,3,Morocco,Haiti,host_boost,0.6351,0.1947,0.1702
+C,3,Morocco,Haiti,combined,0.7227,0.1639,0.1134
+D,1,United States,Paraguay,fifa_rank,0.6883,0.1775,0.1342
+D,1,United States,Paraguay,elo,0.2607,0.2355,0.5037
+D,1,United States,Paraguay,form,0.2788,0.2439,0.4773
+D,1,United States,Paraguay,tournament,0.2497,0.2305,0.5198
+D,1,United States,Paraguay,host_boost,0.3252,0.2669,0.4079
+D,1,United States,Paraguay,combined,0.3555,0.2284,0.416
+D,1,Australia,Turkey,fifa_rank,0.3984,0.2702,0.3314
+D,1,Australia,Turkey,elo,0.3332,0.2712,0.3957
+D,1,Australia,Turkey,form,0.3311,0.27,0.3989
+D,1,Australia,Turkey,tournament,0.2795,0.2443,0.4762
+D,1,Australia,Turkey,host_boost,0.3332,0.2712,0.3957
+D,1,Australia,Turkey,combined,0.3376,0.2666,0.3957
+D,2,United States,Australia,fifa_rank,0.4806,0.2429,0.2766
+D,2,United States,Australia,elo,0.2842,0.2465,0.4693
+D,2,United States,Australia,form,0.2593,0.2349,0.5059
+D,2,United States,Australia,tournament,0.2961,0.2522,0.4517
+D,2,United States,Australia,host_boost,0.3478,0.2793,0.3729
+D,2,United States,Australia,combined,0.3254,0.247,0.4276
+D,2,Paraguay,Turkey,fifa_rank,0.2259,0.2197,0.5544
+D,2,Paraguay,Turkey,elo,0.3554,0.2838,0.3608
+D,2,Paraguay,Turkey,form,0.3118,0.26,0.4282
+D,2,Paraguay,Turkey,tournament,0.3258,0.2672,0.4069
+D,2,Paraguay,Turkey,host_boost,0.3554,0.2838,0.3608
+D,2,Paraguay,Turkey,combined,0.3142,0.2625,0.4233
+D,3,United States,Turkey,fifa_rank,0.5206,0.2302,0.2492
+D,3,United States,Turkey,elo,0.2585,0.2345,0.507
+D,3,United States,Turkey,form,0.232,0.2225,0.5455
+D,3,United States,Turkey,tournament,0.2178,0.2161,0.5661
+D,3,United States,Turkey,host_boost,0.323,0.2657,0.4113
+D,3,United States,Turkey,combined,0.3046,0.231,0.4643
+D,3,Paraguay,Australia,fifa_rank,0.2004,0.2083,0.5913
+D,3,Paraguay,Australia,elo,0.3924,0.2723,0.3353
+D,3,Paraguay,Australia,form,0.3391,0.2744,0.3865
+D,3,Paraguay,Australia,tournament,0.4267,0.2605,0.3128
+D,3,Paraguay,Australia,host_boost,0.3924,0.2723,0.3353
+D,3,Paraguay,Australia,combined,0.3458,0.2583,0.3959
+E,1,Germany,Curacao,fifa_rank,0.8735,0.1017,0.0248
+E,1,Germany,Curacao,elo,0.8157,0.13,0.0543
+E,1,Germany,Curacao,form,0.8387,0.1196,0.0417
+E,1,Germany,Curacao,tournament,0.8449,0.1166,0.0385
+E,1,Germany,Curacao,host_boost,0.8027,0.1356,0.0617
+E,1,Germany,Curacao,combined,0.8361,0.1203,0.0436
+E,1,Ivory Coast,Ecuador,fifa_rank,0.3446,0.2775,0.3779
+E,1,Ivory Coast,Ecuador,elo,0.1591,0.1895,0.6514
+E,1,Ivory Coast,Ecuador,form,0.2028,0.2094,0.5878
+E,1,Ivory Coast,Ecuador,tournament,0.1419,0.1813,0.6768
+E,1,Ivory Coast,Ecuador,host_boost,0.1591,0.1895,0.6514
+E,1,Ivory Coast,Ecuador,combined,0.2045,0.2108,0.5846
+E,2,Germany,Ivory Coast,fifa_rank,0.751,0.1558,0.0932
+E,2,Germany,Ivory Coast,elo,0.5969,0.2066,0.1965
+E,2,Germany,Ivory Coast,form,0.6095,0.2027,0.1878
+E,2,Germany,Ivory Coast,tournament,0.6733,0.1824,0.1442
+E,2,Germany,Ivory Coast,host_boost,0.5969,0.2066,0.1965
+E,2,Germany,Ivory Coast,combined,0.6423,0.1918,0.1658
+E,2,Curacao,Ecuador,fifa_rank,0.1415,0.1811,0.6774
+E,2,Curacao,Ecuador,elo,0.0414,0.1193,0.8393
+E,2,Curacao,Ecuador,form,0.0463,0.1235,0.8302
+E,2,Curacao,Ecuador,tournament,0.0378,0.1159,0.8464
+E,2,Curacao,Ecuador,host_boost,0.0472,0.1244,0.8284
+E,2,Curacao,Ecuador,combined,0.0627,0.1327,0.8046
+E,3,Germany,Ecuador,fifa_rank,0.7393,0.16,0.1007
+E,3,Germany,Ecuador,elo,0.3146,0.2614,0.424
+E,3,Germany,Ecuador,form,0.3825,0.2758,0.3416
+E,3,Germany,Ecuador,tournament,0.3545,0.2832,0.3623
+E,3,Germany,Ecuador,host_boost,0.3146,0.2614,0.424
+E,3,Germany,Ecuador,combined,0.4225,0.248,0.3295
+E,3,Curacao,Ivory Coast,fifa_rank,0.1517,0.186,0.6623
+E,3,Curacao,Ivory Coast,elo,0.138,0.1794,0.6826
+E,3,Curacao,Ivory Coast,form,0.1157,0.1681,0.7162
+E,3,Curacao,Ivory Coast,tournament,0.1436,0.1821,0.6743
+E,3,Curacao,Ivory Coast,host_boost,0.1539,0.187,0.6591
+E,3,Curacao,Ivory Coast,combined,0.1376,0.1791,0.6833
+F,1,Netherlands,Japan,fifa_rank,0.6002,0.2056,0.1942
+F,1,Netherlands,Japan,elo,0.365,0.2822,0.3528
+F,1,Netherlands,Japan,form,0.3271,0.2679,0.405
+F,1,Netherlands,Japan,tournament,0.4574,0.2504,0.2923
+F,1,Netherlands,Japan,host_boost,0.365,0.2822,0.3528
+F,1,Netherlands,Japan,combined,0.4164,0.2585,0.3251
+F,1,Tunisia,Sweden,fifa_rank,0.2492,0.2302,0.5206
+F,1,Tunisia,Sweden,elo,0.4976,0.2375,0.265
+F,1,Tunisia,Sweden,form,0.5181,0.231,0.2509
+F,1,Tunisia,Sweden,tournament,0.4435,0.2549,0.3016
+F,1,Tunisia,Sweden,host_boost,0.4976,0.2375,0.265
+F,1,Tunisia,Sweden,combined,0.4449,0.237,0.3181
+F,2,Netherlands,Tunisia,fifa_rank,0.7929,0.1397,0.0675
+F,2,Netherlands,Tunisia,elo,0.5756,0.2132,0.2112
+F,2,Netherlands,Tunisia,form,0.5773,0.2127,0.21
+F,2,Netherlands,Tunisia,tournament,0.6798,0.1803,0.1399
+F,2,Netherlands,Tunisia,host_boost,0.5756,0.2132,0.2112
+F,2,Netherlands,Tunisia,combined,0.6351,0.1934,0.1715
+F,2,Japan,Sweden,fifa_rank,0.4907,0.2396,0.2697
+F,2,Japan,Sweden,elo,0.6827,0.1794,0.138
+F,2,Japan,Sweden,form,0.7336,0.162,0.1044
+F,2,Japan,Sweden,tournament,0.6697,0.1836,0.1467
+F,2,Japan,Sweden,host_boost,0.6827,0.1794,0.138
+F,2,Japan,Sweden,combined,0.6551,0.1877,0.1572
+F,3,Netherlands,Sweden,fifa_rank,0.7023,0.1729,0.1249
+F,3,Netherlands,Sweden,elo,0.688,0.1776,0.1344
+F,3,Netherlands,Sweden,form,0.7037,0.1724,0.1239
+F,3,Netherlands,Sweden,tournament,0.7358,0.1613,0.103
+F,3,Netherlands,Sweden,host_boost,0.688,0.1776,0.1344
+F,3,Netherlands,Sweden,combined,0.7019,0.1729,0.1252
+F,3,Japan,Tunisia,fifa_rank,0.6385,0.1936,0.1679
+F,3,Japan,Tunisia,elo,0.5688,0.2153,0.2159
+F,3,Japan,Tunisia,form,0.6184,0.1999,0.1817
+F,3,Japan,Tunisia,tournament,0.6012,0.2053,0.1936
+F,3,Japan,Tunisia,host_boost,0.5688,0.2153,0.2159
+F,3,Japan,Tunisia,combined,0.6,0.2056,0.1944
+G,1,Belgium,Egypt,fifa_rank,0.7684,0.1493,0.0823
+G,1,Belgium,Egypt,elo,0.5325,0.2265,0.241
+G,1,Belgium,Egypt,form,0.5264,0.2284,0.2452
+G,1,Belgium,Egypt,tournament,0.6794,0.1805,0.1402
+G,1,Belgium,Egypt,host_boost,0.5325,0.2265,0.241
+G,1,Belgium,Egypt,combined,0.6002,0.2047,0.1952
+G,1,Iran,New Zealand,fifa_rank,0.781,0.1444,0.0746
+G,1,Iran,New Zealand,elo,0.4761,0.2443,0.2796
+G,1,Iran,New Zealand,form,0.4863,0.2411,0.2727
+G,1,Iran,New Zealand,tournament,0.5251,0.2288,0.246
+G,1,Iran,New Zealand,host_boost,0.4761,0.2443,0.2796
+G,1,Iran,New Zealand,combined,0.547,0.2212,0.2318
+G,2,Belgium,Iran,fifa_rank,0.6218,0.1988,0.1793
+G,2,Belgium,Iran,elo,0.407,0.2672,0.3258
+G,2,Belgium,Iran,form,0.3659,0.2819,0.3522
+G,2,Belgium,Iran,tournament,0.5003,0.2366,0.2631
+G,2,Belgium,Iran,host_boost,0.407,0.2672,0.3258
+G,2,Belgium,Iran,combined,0.4537,0.2526,0.2937
+G,2,Egypt,New Zealand,fifa_rank,0.6425,0.1923,0.1652
+G,2,Egypt,New Zealand,elo,0.3522,0.2819,0.3659
+G,2,Egypt,New Zealand,form,0.3367,0.2731,0.3902
+G,2,Egypt,New Zealand,tournament,0.3324,0.2707,0.3969
+G,2,Egypt,New Zealand,host_boost,0.3522,0.2819,0.3659
+G,2,Egypt,New Zealand,combined,0.4034,0.2601,0.3365
+G,3,Belgium,New Zealand,fifa_rank,0.8752,0.1007,0.0241
+G,3,Belgium,New Zealand,elo,0.5244,0.2291,0.2465
+G,3,Belgium,New Zealand,form,0.4946,0.2384,0.267
+G,3,Belgium,New Zealand,tournament,0.6499,0.19,0.1601
+G,3,Belgium,New Zealand,host_boost,0.5244,0.2291,0.2465
+G,3,Belgium,New Zealand,combined,0.6059,0.1999,0.1942
+G,3,Egypt,Iran,fifa_rank,0.2129,0.214,0.5731
+G,3,Egypt,Iran,elo,0.2739,0.2416,0.4845
+G,3,Egypt,Iran,form,0.2508,0.231,0.5183
+G,3,Egypt,Iran,tournament,0.2205,0.2174,0.5621
+G,3,Egypt,Iran,host_boost,0.2739,0.2416,0.4845
+G,3,Egypt,Iran,combined,0.2479,0.2298,0.5223
+H,1,Spain,Cabo Verde,fifa_rank,0.8599,0.109,0.0311
+H,1,Spain,Cabo Verde,elo,0.8334,0.1221,0.0446
+H,1,Spain,Cabo Verde,form,0.8616,0.1081,0.0303
+H,1,Spain,Cabo Verde,tournament,0.8459,0.1161,0.038
+H,1,Spain,Cabo Verde,host_boost,0.8334,0.1221,0.0446
+H,1,Spain,Cabo Verde,combined,0.8476,0.1151,0.0373
+H,1,Saudi Arabia,Uruguay,fifa_rank,0.1318,0.1764,0.6918
+H,1,Saudi Arabia,Uruguay,elo,0.1529,0.1866,0.6606
+H,1,Saudi Arabia,Uruguay,form,0.1727,0.1958,0.6315
+H,1,Saudi Arabia,Uruguay,tournament,0.1017,0.1606,0.7377
+H,1,Saudi Arabia,Uruguay,host_boost,0.1529,0.1866,0.6606
+H,1,Saudi Arabia,Uruguay,combined,0.1459,0.1829,0.6711
+H,2,Spain,Saudi Arabia,fifa_rank,0.8466,0.1157,0.0376
+H,2,Spain,Saudi Arabia,elo,0.8224,0.1271,0.0505
+H,2,Spain,Saudi Arabia,form,0.8528,0.1126,0.0345
+H,2,Spain,Saudi Arabia,tournament,0.8634,0.1072,0.0295
+H,2,Spain,Saudi Arabia,host_boost,0.8224,0.1271,0.0505
+H,2,Spain,Saudi Arabia,combined,0.841,0.1182,0.0408
+H,2,Cabo Verde,Uruguay,fifa_rank,0.1118,0.1661,0.7221
+H,2,Cabo Verde,Uruguay,elo,0.1376,0.1792,0.6832
+H,2,Cabo Verde,Uruguay,form,0.1557,0.1879,0.6564
+H,2,Cabo Verde,Uruguay,tournament,0.1269,0.1739,0.6992
+H,2,Cabo Verde,Uruguay,host_boost,0.1376,0.1792,0.6832
+H,2,Cabo Verde,Uruguay,combined,0.1354,0.178,0.6867
+H,3,Spain,Uruguay,fifa_rank,0.6592,0.187,0.1538
+H,3,Spain,Uruguay,elo,0.6367,0.1942,0.1691
+H,3,Spain,Uruguay,form,0.7282,0.1639,0.1078
+H,3,Spain,Uruguay,tournament,0.6491,0.1902,0.1607
+H,3,Spain,Uruguay,host_boost,0.6367,0.1942,0.1691
+H,3,Spain,Uruguay,combined,0.6659,0.1846,0.1495
+H,3,Cabo Verde,Saudi Arabia,fifa_rank,0.328,0.2684,0.4036
+H,3,Cabo Verde,Saudi Arabia,elo,0.3379,0.2738,0.3883
+H,3,Cabo Verde,Saudi Arabia,form,0.3375,0.2735,0.389
+H,3,Cabo Verde,Saudi Arabia,tournament,0.4188,0.2632,0.318
+H,3,Cabo Verde,Saudi Arabia,host_boost,0.3379,0.2738,0.3883
+H,3,Cabo Verde,Saudi Arabia,combined,0.348,0.271,0.381
+I,1,France,Senegal,fifa_rank,0.6897,0.1771,0.1332
+I,1,France,Senegal,elo,0.6223,0.1987,0.179
+I,1,France,Senegal,form,0.5907,0.2085,0.2008
+I,1,France,Senegal,tournament,0.6916,0.1764,0.132
+I,1,France,Senegal,host_boost,0.6223,0.1987,0.179
+I,1,France,Senegal,combined,0.6383,0.1935,0.1682
+I,1,Norway,Iraq,fifa_rank,0.6545,0.1885,0.157
+I,1,Norway,Iraq,elo,0.5718,0.2144,0.2138
+I,1,Norway,Iraq,form,0.6474,0.1908,0.1618
+I,1,Norway,Iraq,tournament,0.6849,0.1787,0.1365
+I,1,Norway,Iraq,host_boost,0.5718,0.2144,0.2138
+I,1,Norway,Iraq,combined,0.6242,0.1979,0.1779
+I,2,France,Norway,fifa_rank,0.7475,0.157,0.0954
+I,2,France,Norway,elo,0.5595,0.2182,0.2223
+I,2,France,Norway,form,0.5265,0.2284,0.2451
+I,2,France,Norway,tournament,0.6488,0.1903,0.1609
+I,2,France,Norway,host_boost,0.5595,0.2182,0.2223
+I,2,France,Norway,combined,0.6022,0.2043,0.1934
+I,2,Senegal,Iraq,fifa_rank,0.7189,0.1672,0.1139
+I,2,Senegal,Iraq,elo,0.5041,0.2354,0.2605
+I,2,Senegal,Iraq,form,0.5893,0.209,0.2018
+I,2,Senegal,Iraq,tournament,0.6412,0.1927,0.1661
+I,2,Senegal,Iraq,host_boost,0.5041,0.2354,0.2605
+I,2,Senegal,Iraq,combined,0.5889,0.2088,0.2023
+I,3,France,Iraq,fifa_rank,0.8695,0.1039,0.0266
+I,3,France,Iraq,elo,0.7277,0.1641,0.1082
+I,3,France,Iraq,form,0.7588,0.1529,0.0883
+I,3,France,Iraq,tournament,0.8392,0.1193,0.0415
+I,3,France,Iraq,host_boost,0.7277,0.1641,0.1082
+I,3,France,Iraq,combined,0.7806,0.1425,0.0769
+I,3,Senegal,Norway,fifa_rank,0.4499,0.2528,0.2973
+I,3,Senegal,Norway,elo,0.3109,0.2595,0.4296
+I,3,Senegal,Norway,form,0.3122,0.2602,0.4276
+I,3,Senegal,Norway,tournament,0.32,0.2642,0.4158
+I,3,Senegal,Norway,host_boost,0.3109,0.2595,0.4296
+I,3,Senegal,Norway,combined,0.3404,0.259,0.4006
+J,1,Argentina,Algeria,fifa_rank,0.8399,0.119,0.0411
+J,1,Argentina,Algeria,elo,0.707,0.1713,0.1217
+J,1,Argentina,Algeria,form,0.7087,0.1707,0.1206
+J,1,Argentina,Algeria,tournament,0.7698,0.1487,0.0815
+J,1,Argentina,Algeria,host_boost,0.707,0.1713,0.1217
+J,1,Argentina,Algeria,combined,0.7434,0.1573,0.0993
+J,1,Austria,Jordan,fifa_rank,0.7036,0.1724,0.124
+J,1,Austria,Jordan,elo,0.4121,0.2655,0.3225
+J,1,Austria,Jordan,form,0.4801,0.243,0.2769
+J,1,Austria,Jordan,tournament,0.3877,0.274,0.3383
+J,1,Austria,Jordan,host_boost,0.4121,0.2655,0.3225
+J,1,Austria,Jordan,combined,0.4837,0.2425,0.2738
+J,2,Argentina,Austria,fifa_rank,0.6988,0.174,0.1272
+J,2,Argentina,Austria,elo,0.7097,0.1704,0.12
+J,2,Argentina,Austria,form,0.7243,0.1653,0.1104
+J,2,Argentina,Austria,tournament,0.7478,0.157,0.0953
+J,2,Argentina,Austria,host_boost,0.7097,0.1704,0.12
+J,2,Argentina,Austria,combined,0.7169,0.1678,0.1153
+J,2,Algeria,Jordan,fifa_rank,0.452,0.2521,0.2959
+J,2,Algeria,Jordan,elo,0.4162,0.2641,0.3198
+J,2,Algeria,Jordan,form,0.5042,0.2354,0.2604
+J,2,Algeria,Jordan,tournament,0.3506,0.281,0.3684
+J,2,Algeria,Jordan,host_boost,0.4162,0.2641,0.3198
+J,2,Algeria,Jordan,combined,0.4355,0.257,0.3075
+J,3,Argentina,Jordan,fifa_rank,0.8669,0.1053,0.0278
+J,3,Argentina,Jordan,elo,0.743,0.1587,0.0983
+J,3,Argentina,Jordan,form,0.7896,0.141,0.0694
+J,3,Argentina,Jordan,tournament,0.7642,0.1509,0.085
+J,3,Argentina,Jordan,host_boost,0.743,0.1587,0.0983
+J,3,Argentina,Jordan,combined,0.7826,0.1424,0.075
+J,3,Algeria,Austria,fifa_rank,0.1707,0.1949,0.6344
+J,3,Algeria,Austria,elo,0.3615,0.2835,0.355
+J,3,Algeria,Austria,form,0.3819,0.276,0.342
+J,3,Algeria,Austria,tournament,0.3312,0.2701,0.3987
+J,3,Algeria,Austria,host_boost,0.3615,0.2835,0.355
+J,3,Algeria,Austria,combined,0.3239,0.2619,0.4142
+K,1,Portugal,Uzbekistan,fifa_rank,0.8143,0.1306,0.0551
+K,1,Portugal,Uzbekistan,elo,0.5136,0.2324,0.2539
+K,1,Portugal,Uzbekistan,form,0.5375,0.225,0.2375
+K,1,Portugal,Uzbekistan,tournament,0.5317,0.2268,0.2415
+K,1,Portugal,Uzbekistan,host_boost,0.5136,0.2324,0.2539
+K,1,Portugal,Uzbekistan,combined,0.5824,0.2094,0.2082
+K,1,Colombia,Congo DR,fifa_rank,0.7252,0.165,0.1098
+K,1,Colombia,Congo DR,elo,0.6497,0.19,0.1602
+K,1,Colombia,Congo DR,form,0.596,0.2069,0.1971
+K,1,Colombia,Congo DR,tournament,0.8165,0.1297,0.0538
+K,1,Colombia,Congo DR,host_boost,0.6497,0.19,0.1602
+K,1,Colombia,Congo DR,combined,0.6764,0.1802,0.1434
+K,2,Portugal,Colombia,fifa_rank,0.4806,0.2429,0.2766
+K,2,Portugal,Colombia,elo,0.3164,0.2623,0.4213
+K,2,Portugal,Colombia,form,0.3469,0.2788,0.3743
+K,2,Portugal,Colombia,tournament,0.3336,0.2714,0.3949
+K,2,Portugal,Colombia,host_boost,0.3164,0.2623,0.4213
+K,2,Portugal,Colombia,combined,0.3594,0.2639,0.3766
+K,2,Uzbekistan,Congo DR,fifa_rank,0.3213,0.2648,0.4139
+K,2,Uzbekistan,Congo DR,elo,0.4488,0.2532,0.2981
+K,2,Uzbekistan,Congo DR,form,0.405,0.2679,0.3271
+K,2,Uzbekistan,Congo DR,tournament,0.7073,0.1712,0.1215
+K,2,Uzbekistan,Congo DR,host_boost,0.4488,0.2532,0.2981
+K,2,Uzbekistan,Congo DR,combined,0.4511,0.2469,0.302
+K,3,Portugal,Congo DR,fifa_rank,0.7906,0.1406,0.0689
+K,3,Portugal,Congo DR,elo,0.5974,0.2065,0.1962
+K,3,Portugal,Congo DR,form,0.5811,0.2115,0.2074
+K,3,Portugal,Congo DR,tournament,0.8013,0.1362,0.0625
+K,3,Portugal,Congo DR,host_boost,0.5974,0.2065,0.1962
+K,3,Portugal,Congo DR,combined,0.6625,0.184,0.1535
+K,3,Uzbekistan,Colombia,fifa_rank,0.089,0.1533,0.7577
+K,3,Uzbekistan,Colombia,elo,0.2129,0.2139,0.5732
+K,3,Uzbekistan,Colombia,form,0.2266,0.2201,0.5533
+K,3,Uzbekistan,Colombia,tournament,0.2174,0.216,0.5666
+K,3,Uzbekistan,Colombia,host_boost,0.2129,0.2139,0.5732
+K,3,Uzbekistan,Colombia,combined,0.1922,0.2037,0.6041
+L,1,England,Croatia,fifa_rank,0.4499,0.2528,0.2973
+L,1,England,Croatia,elo,0.5296,0.2275,0.243
+L,1,England,Croatia,form,0.5815,0.2114,0.2071
+L,1,England,Croatia,tournament,0.5439,0.223,0.2331
+L,1,England,Croatia,host_boost,0.5296,0.2275,0.243
+L,1,England,Croatia,combined,0.5288,0.2278,0.2434
+L,1,Ghana,Panama,fifa_rank,0.4479,0.2534,0.2987
+L,1,Ghana,Panama,elo,0.2218,0.2179,0.5603
+L,1,Ghana,Panama,form,0.2066,0.2111,0.5823
+L,1,Ghana,Panama,tournament,0.339,0.2743,0.3867
+L,1,Ghana,Panama,host_boost,0.2019,0.209,0.589
+L,1,Ghana,Panama,combined,0.2788,0.2309,0.4903
+L,2,England,Ghana,fifa_rank,0.8422,0.1179,0.0399
+L,2,England,Ghana,elo,0.7706,0.1484,0.081
+L,2,England,Ghana,form,0.8157,0.13,0.0542
+L,2,England,Ghana,tournament,0.8144,0.1306,0.055
+L,2,England,Ghana,host_boost,0.7706,0.1484,0.081
+L,2,England,Ghana,combined,0.8028,0.1351,0.0622
+L,2,Croatia,Panama,fifa_rank,0.8415,0.1182,0.0403
+L,2,Croatia,Panama,elo,0.4794,0.2432,0.2773
+L,2,Croatia,Panama,form,0.5002,0.2366,0.2631
+L,2,Croatia,Panama,tournament,0.7006,0.1734,0.126
+L,2,Croatia,Panama,host_boost,0.4475,0.2536,0.2989
+L,2,Croatia,Panama,combined,0.587,0.2071,0.2058
+L,3,England,Panama,fifa_rank,0.8677,0.1048,0.0274
+L,3,England,Panama,elo,0.6368,0.1941,0.169
+L,3,England,Panama,form,0.6944,0.1755,0.1301
+L,3,England,Panama,tournament,0.8024,0.1357,0.0619
+L,3,England,Panama,host_boost,0.6105,0.2024,0.1871
+L,3,England,Panama,combined,0.7196,0.1637,0.1167
+L,3,Croatia,Ghana,fifa_rank,0.809,0.1329,0.0581
+L,3,Croatia,Ghana,elo,0.6623,0.186,0.1517
+L,3,Croatia,Ghana,form,0.695,0.1753,0.1297
+L,3,Croatia,Ghana,tournament,0.7196,0.1669,0.1135
+L,3,Croatia,Ghana,host_boost,0.6623,0.186,0.1517
+L,3,Croatia,Ghana,combined,0.7084,0.1699,0.1217

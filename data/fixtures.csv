@@ -1,0 +1,105 @@
+match_id,stage,group,matchday,date,home_team,away_team,stadium,city,country
+1,group,A,1,2026-06-11,Mexico,South Africa,Estadio Azteca,Mexico City,Mexico
+2,group,A,1,2026-06-12,Korea Republic,Czechia,Estadio Akron,Guadalajara,Mexico
+3,group,A,2,2026-06-18,Mexico,Korea Republic,Estadio BBVA,Monterrey,Mexico
+4,group,A,2,2026-06-19,South Africa,Czechia,Estadio BBVA,Monterrey,Mexico
+5,group,A,3,2026-06-25,Mexico,Czechia,Estadio BBVA,Monterrey,Mexico
+6,group,A,3,2026-06-26,South Africa,Korea Republic,Estadio Akron,Guadalajara,Mexico
+7,group,B,1,2026-06-12,Canada,Bosnia and Herzegovina,BMO Field,Toronto,Canada
+8,group,B,1,2026-06-13,Qatar,Switzerland,Levi's Stadium,Santa Clara,United States
+9,group,B,2,2026-06-19,Canada,Qatar,Arrowhead Stadium,Kansas City,United States
+10,group,B,2,2026-06-20,Bosnia and Herzegovina,Switzerland,SoFi Stadium,Inglewood,United States
+11,group,B,3,2026-06-26,Canada,Switzerland,BMO Field,Toronto,Canada
+12,group,B,3,2026-06-27,Bosnia and Herzegovina,Qatar,Gillette Stadium,Boston,United States
+13,group,C,1,2026-06-12,Brazil,Morocco,Levi's Stadium,Santa Clara,United States
+14,group,C,1,2026-06-13,Haiti,Scotland,Lincoln Financial Field,Philadelphia,United States
+15,group,C,2,2026-06-19,Brazil,Haiti,Seattle Center,Seattle,United States
+16,group,C,2,2026-06-20,Morocco,Scotland,Levi's Stadium,Santa Clara,United States
+17,group,C,3,2026-06-26,Brazil,Scotland,SoFi Stadium,Inglewood,United States
+18,group,C,3,2026-06-27,Morocco,Haiti,AT&T Stadium,Dallas,United States
+19,group,D,1,2026-06-12,United States,Paraguay,SoFi Stadium,Inglewood,United States
+20,group,D,1,2026-06-13,Australia,Turkey,BC Place,Vancouver,Canada
+21,group,D,2,2026-06-19,United States,Australia,Hard Rock Stadium,Miami,United States
+22,group,D,2,2026-06-20,Paraguay,Turkey,Arrowhead Stadium,Kansas City,United States
+23,group,D,3,2026-06-26,United States,Turkey,Arrowhead Stadium,Kansas City,United States
+24,group,D,3,2026-06-27,Paraguay,Australia,SoFi Stadium,Inglewood,United States
+25,group,E,1,2026-06-13,Germany,Curacao,Levi's Stadium,Santa Clara,United States
+26,group,E,1,2026-06-14,Ivory Coast,Ecuador,Hard Rock Stadium,Miami,United States
+27,group,E,2,2026-06-20,Germany,Ivory Coast,Arrowhead Stadium,Kansas City,United States
+28,group,E,2,2026-06-21,Curacao,Ecuador,SoFi Stadium,Inglewood,United States
+29,group,E,3,2026-06-27,Germany,Ecuador,SoFi Stadium,Inglewood,United States
+30,group,E,3,2026-06-28,Curacao,Ivory Coast,Levi's Stadium,Santa Clara,United States
+31,group,F,1,2026-06-13,Netherlands,Japan,AT&T Stadium,Dallas,United States
+32,group,F,1,2026-06-14,Tunisia,Sweden,Seattle Center,Seattle,United States
+33,group,F,2,2026-06-20,Netherlands,Tunisia,Arrowhead Stadium,Kansas City,United States
+34,group,F,2,2026-06-21,Japan,Sweden,Gillette Stadium,Boston,United States
+35,group,F,3,2026-06-27,Netherlands,Sweden,AT&T Stadium,Dallas,United States
+36,group,F,3,2026-06-28,Japan,Tunisia,Arrowhead Stadium,Kansas City,United States
+37,group,G,1,2026-06-14,Belgium,Egypt,Lincoln Financial Field,Philadelphia,United States
+38,group,G,1,2026-06-15,Iran,New Zealand,Seattle Center,Seattle,United States
+39,group,G,2,2026-06-21,Belgium,Iran,MetLife Stadium,East Rutherford,United States
+40,group,G,2,2026-06-22,Egypt,New Zealand,Lincoln Financial Field,Philadelphia,United States
+41,group,G,3,2026-06-28,Belgium,New Zealand,Seattle Center,Seattle,United States
+42,group,G,3,2026-06-29,Egypt,Iran,Hard Rock Stadium,Miami,United States
+43,group,H,1,2026-06-14,Spain,Cabo Verde,Estadio Akron,Guadalajara,Mexico
+44,group,H,1,2026-06-15,Saudi Arabia,Uruguay,Estadio Azteca,Mexico City,Mexico
+45,group,H,2,2026-06-21,Spain,Saudi Arabia,Estadio Akron,Guadalajara,Mexico
+46,group,H,2,2026-06-22,Cabo Verde,Uruguay,Estadio Azteca,Mexico City,Mexico
+47,group,H,3,2026-06-28,Spain,Uruguay,Estadio Akron,Guadalajara,Mexico
+48,group,H,3,2026-06-29,Cabo Verde,Saudi Arabia,Estadio BBVA,Monterrey,Mexico
+49,group,I,1,2026-06-15,France,Senegal,Gillette Stadium,Boston,United States
+50,group,I,1,2026-06-16,Norway,Iraq,Hard Rock Stadium,Miami,United States
+51,group,I,2,2026-06-22,France,Norway,SoFi Stadium,Inglewood,United States
+52,group,I,2,2026-06-23,Senegal,Iraq,AT&T Stadium,Dallas,United States
+53,group,I,3,2026-06-29,France,Iraq,Arrowhead Stadium,Kansas City,United States
+54,group,I,3,2026-06-30,Senegal,Norway,AT&T Stadium,Dallas,United States
+55,group,J,1,2026-06-15,Argentina,Algeria,Levi's Stadium,Santa Clara,United States
+56,group,J,1,2026-06-16,Austria,Jordan,Hard Rock Stadium,Miami,United States
+57,group,J,2,2026-06-22,Argentina,Austria,Gillette Stadium,Boston,United States
+58,group,J,2,2026-06-23,Algeria,Jordan,Gillette Stadium,Boston,United States
+59,group,J,3,2026-06-29,Argentina,Jordan,Gillette Stadium,Boston,United States
+60,group,J,3,2026-06-30,Algeria,Austria,SoFi Stadium,Inglewood,United States
+61,group,K,1,2026-06-16,Portugal,Uzbekistan,AT&T Stadium,Dallas,United States
+62,group,K,1,2026-06-17,Colombia,Congo DR,Gillette Stadium,Boston,United States
+63,group,K,2,2026-06-23,Portugal,Colombia,Hard Rock Stadium,Miami,United States
+64,group,K,2,2026-06-24,Uzbekistan,Congo DR,Seattle Center,Seattle,United States
+65,group,K,3,2026-06-30,Portugal,Congo DR,MetLife Stadium,East Rutherford,United States
+66,group,K,3,2026-07-01,Uzbekistan,Colombia,Levi's Stadium,Santa Clara,United States
+67,group,L,1,2026-06-17,England,Croatia,BMO Field,Toronto,Canada
+68,group,L,1,2026-06-18,Ghana,Panama,BMO Field,Toronto,Canada
+69,group,L,2,2026-06-24,England,Ghana,BMO Field,Toronto,Canada
+70,group,L,2,2026-06-25,Croatia,Panama,BC Place,Vancouver,Canada
+71,group,L,3,2026-07-01,England,Panama,BMO Field,Toronto,Canada
+72,group,L,3,2026-07-02,Croatia,Ghana,BC Place,Vancouver,Canada
+73,round_of_32,,,2026-06-29,TBD,TBD,TBD,TBD,TBD
+74,round_of_32,,,2026-06-30,TBD,TBD,TBD,TBD,TBD
+75,round_of_32,,,2026-07-01,TBD,TBD,TBD,TBD,TBD
+76,round_of_32,,,2026-07-02,TBD,TBD,TBD,TBD,TBD
+77,round_of_32,,,2026-07-03,TBD,TBD,TBD,TBD,TBD
+78,round_of_32,,,2026-07-04,TBD,TBD,TBD,TBD,TBD
+79,round_of_32,,,2026-07-05,TBD,TBD,TBD,TBD,TBD
+80,round_of_32,,,2026-07-06,TBD,TBD,TBD,TBD,TBD
+81,round_of_32,,,2026-07-07,TBD,TBD,TBD,TBD,TBD
+82,round_of_32,,,2026-07-08,TBD,TBD,TBD,TBD,TBD
+83,round_of_32,,,2026-07-09,TBD,TBD,TBD,TBD,TBD
+84,round_of_32,,,2026-07-10,TBD,TBD,TBD,TBD,TBD
+85,round_of_32,,,2026-07-11,TBD,TBD,TBD,TBD,TBD
+86,round_of_32,,,2026-07-12,TBD,TBD,TBD,TBD,TBD
+87,round_of_32,,,2026-07-13,TBD,TBD,TBD,TBD,TBD
+88,round_of_32,,,2026-07-14,TBD,TBD,TBD,TBD,TBD
+89,round_of_16,,,2026-07-04,TBD,TBD,TBD,TBD,TBD
+90,round_of_16,,,2026-07-05,TBD,TBD,TBD,TBD,TBD
+91,round_of_16,,,2026-07-06,TBD,TBD,TBD,TBD,TBD
+92,round_of_16,,,2026-07-07,TBD,TBD,TBD,TBD,TBD
+93,round_of_16,,,2026-07-08,TBD,TBD,TBD,TBD,TBD
+94,round_of_16,,,2026-07-09,TBD,TBD,TBD,TBD,TBD
+95,round_of_16,,,2026-07-10,TBD,TBD,TBD,TBD,TBD
+96,round_of_16,,,2026-07-11,TBD,TBD,TBD,TBD,TBD
+97,quarterfinal,,,2026-07-09,TBD,TBD,TBD,TBD,TBD
+98,quarterfinal,,,2026-07-10,TBD,TBD,TBD,TBD,TBD
+99,quarterfinal,,,2026-07-11,TBD,TBD,TBD,TBD,TBD
+100,quarterfinal,,,2026-07-12,TBD,TBD,TBD,TBD,TBD
+101,semifinal,,,2026-07-14,TBD,TBD,TBD,TBD,TBD
+102,semifinal,,,2026-07-15,TBD,TBD,TBD,TBD,TBD
+103,third_place,,,2026-07-18,TBD,TBD,TBD,TBD,TBD
+104,final,,,2026-07-19,TBD,TBD,TBD,TBD,TBD
