@@ -192,6 +192,50 @@ def match_proba(
     return p_home_win, p_draw, p_away_win
 
 
+def most_likely_score(
+    attack_a: float,
+    defense_b: float,
+    attack_b: float,
+    defense_a: float,
+    global_avg: float,
+    rho: float = -0.08,
+    max_goals: int = 10,
+) -> tuple:
+    """
+    Return (goals_a, goals_b, probability) of the most probable exact scoreline.
+    Uses the same DC-corrected joint distribution as match_proba.
+    """
+    lambda_a = max(0.1, attack_a * defense_b * global_avg)
+    lambda_b = max(0.1, attack_b * defense_a * global_avg)
+
+    goals = np.arange(max_goals + 1)
+    pmf_a = poisson.pmf(goals, lambda_a)
+    pmf_b = poisson.pmf(goals, lambda_b)
+    joint = np.outer(pmf_a, pmf_b)
+
+    def _dc(i, j):
+        if i == 0 and j == 0:
+            return 1.0 - lambda_a * lambda_b * rho
+        elif i == 1 and j == 0:
+            return 1.0 + lambda_b * rho
+        elif i == 0 and j == 1:
+            return 1.0 + lambda_a * rho
+        elif i == 1 and j == 1:
+            return 1.0 - rho
+        return 1.0
+
+    for i in range(min(2, max_goals + 1)):
+        for j in range(min(2, max_goals + 1)):
+            joint[i, j] *= _dc(i, j)
+
+    total = joint.sum()
+    if total > 0:
+        joint /= total
+
+    idx = np.unravel_index(np.argmax(joint), joint.shape)
+    return int(idx[0]), int(idx[1]), float(joint[idx])
+
+
 def calibrate_rho(
     results_df: pd.DataFrame,
     teams_list=None,

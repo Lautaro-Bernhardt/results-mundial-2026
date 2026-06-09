@@ -86,6 +86,7 @@ def load_csvs() -> dict:
         "champion":     "output/champion_probabilities.csv",
         "simulation":   "output/simulation_results.csv",
         "matches":      "output/match_predictions.csv",
+        "scorelines":   "output/match_scorelines.csv",
         "elo":          "output/elo_ratings.csv",
         "backtest":     "output/backtest_metrics.csv",
         "backtest_year":"output/backtest_by_year.csv",
@@ -258,16 +259,28 @@ def tab_etapas(data: dict):
 def tab_grupos(data: dict):
     st.header("⚽ Grupos — Predicciones")
 
-    matches = data.get("matches")
+    matches    = data.get("matches")
+    scorelines = data.get("scorelines")
     if matches is None:
         st.warning("No hay datos de partidos.")
         return
 
     from simulate import GROUPS
 
+    # Build scoreline lookup: (home, away) -> "X - Y (p%)"
+    score_lookup = {}
+    if scorelines is not None:
+        for _, r in scorelines.iterrows():
+            key  = (r["home_team"], r["away_team"])
+            rkey = (r["away_team"], r["home_team"])
+            val  = f"{int(r['pred_home'])}-{int(r['pred_away'])} ({r['prob']:.0%})"
+            rval = f"{int(r['pred_away'])}-{int(r['pred_home'])} ({r['prob']:.0%})"
+            score_lookup[key]  = val
+            score_lookup[rkey] = rval
+
     models = matches["model"].unique().tolist()
     sel = st.selectbox(
-        "Modelo",
+        "Modelo de probabilidades",
         models,
         format_func=lambda x: MODEL_LABELS.get(x, x),
         index=models.index("combined") if "combined" in models else 0,
@@ -290,13 +303,15 @@ def tab_grupos(data: dict):
 
                 rows_d = []
                 for _, r in gm.iterrows():
+                    sc = score_lookup.get((r["home_team"], r["away_team"]), "")
                     rows_d.append({
-                        "MD": int(r["matchday"]),
-                        "Local": flabel(r["home_team"]),
-                        "Local %": f"{r['p_home_win']:.0%}",
-                        "Empate": f"{r['p_draw']:.0%}",
-                        "Visita %": f"{r['p_away_win']:.0%}",
-                        "Visita": flabel(r["away_team"]),
+                        "MD":           int(r["matchday"]),
+                        "Local":        flabel(r["home_team"]),
+                        "Score pred.":  sc,
+                        "% local":      f"{r['p_home_win']:.0%}",
+                        "% empate":     f"{r['p_draw']:.0%}",
+                        "% visita":     f"{r['p_away_win']:.0%}",
+                        "Visita":       flabel(r["away_team"]),
                     })
                 st.dataframe(pd.DataFrame(rows_d), use_container_width=True, hide_index=True)
 
@@ -528,32 +543,49 @@ def _result_emoji(hs, as_, ph, pa):
     return "✅" if actual == predicted else "❌"
 
 
+def _merge_predictions(fixtures: pd.DataFrame, pred_combined: pd.DataFrame,
+                        score_cols: list, prob_cols: list) -> pd.DataFrame:
+    """Merge predictions bidirectionally (handles home/away swaps)."""
+    fixtures = fixtures.merge(pred_combined, on=["home_team", "away_team"], how="left")
+    missing = fixtures[prob_cols[0]].isna()
+    if missing.any():
+        swap = {c: c for c in pred_combined.columns}
+        swap.update({"home_team": "away_team", "away_team": "home_team"})
+        if "p_home_win" in pred_combined.columns:
+            swap["p_home_win"] = "p_away_win"
+            swap["p_away_win"] = "p_home_win"
+        if "pred_home" in pred_combined.columns:
+            swap["pred_home"] = "pred_away"
+            swap["pred_away"] = "pred_home"
+        pred_rev = pred_combined.rename(columns=swap)
+        drop_cols = [c for c in score_cols + prob_cols if c in fixtures.columns]
+        filled = fixtures[missing].drop(columns=drop_cols).merge(
+            pred_rev, on=["home_team", "away_team"], how="left"
+        )
+        fixtures.loc[missing, score_cols + prob_cols] = (
+            filled[score_cols + prob_cols].values
+        )
+    return fixtures
+
+
 def tab_resultados(data: dict):
     st.header("📋 Fixture y Resultados")
 
     fixtures = load_fixtures()
-    matches_pred = data.get("matches")  # pre-computed predictions
+    matches_pred = data.get("matches")
+    scorelines   = data.get("scorelines")
 
-    # Merge combined-model predictions into fixtures (bidirectional: handles swapped home/away)
+    # Merge combined-model win probabilities
     if matches_pred is not None:
-        pred_combined = matches_pred[matches_pred["model"] == "combined"][
+        pred_probs = matches_pred[matches_pred["model"] == "combined"][
             ["home_team", "away_team", "p_home_win", "p_draw", "p_away_win"]
         ].copy()
-        # Forward merge
-        fixtures = fixtures.merge(pred_combined, on=["home_team", "away_team"], how="left")
-        # Reverse merge for unmatched rows (teams were stored with swapped order)
-        missing = fixtures["p_home_win"].isna()
-        if missing.any():
-            pred_rev = pred_combined.rename(columns={
-                "home_team": "away_team", "away_team": "home_team",
-                "p_home_win": "p_away_win", "p_away_win": "p_home_win",
-            })
-            filled = fixtures[missing].drop(columns=["p_home_win", "p_draw", "p_away_win"]).merge(
-                pred_rev, on=["home_team", "away_team"], how="left"
-            )
-            fixtures.loc[missing, ["p_home_win", "p_draw", "p_away_win"]] = (
-                filled[["p_home_win", "p_draw", "p_away_win"]].values
-            )
+        fixtures = _merge_predictions(fixtures, pred_probs, [], ["p_home_win", "p_draw", "p_away_win"])
+
+    # Merge Poisson scorelines
+    if scorelines is not None:
+        pred_scores = scorelines[["home_team", "away_team", "pred_home", "pred_away", "prob"]].copy()
+        fixtures = _merge_predictions(fixtures, pred_scores, ["pred_home", "pred_away"], ["prob"])
 
     # ---- Stage filter ----
     stages_present = [s for s in STAGE_ORDER if s in fixtures["stage"].values]
@@ -575,29 +607,38 @@ def tab_resultados(data: dict):
     # ---- Build display table ----
     rows = []
     for _, r in stage_df.sort_values(["date", "match_id"]).iterrows():
-        hs = r.get("home_score", "")
+        hs  = r.get("home_score", "")
         as_ = r.get("away_score", "")
-        ph = r.get("p_home_win", None)
-        pa = r.get("p_away_win", None)
+        ph  = r.get("p_home_win", None)
+        pa  = r.get("p_away_win", None)
+        ph_s = r.get("pred_home", None)
+        pa_s = r.get("pred_away", None)
 
-        # Result string
-        result = f"{int(hs)} - {int(as_)}" if (str(hs).isdigit() and str(as_).isdigit()) else "— vs —"
+        # Actual result
+        played = str(hs).isdigit() and str(as_).isdigit()
+        result = f"{int(hs)} - {int(as_)}" if played else ""
 
-        # Prediction accuracy emoji
-        acc = _result_emoji(hs, as_, ph, pa) if (ph is not None) else ""
+        # Most likely scoreline (Poisson)
+        if pd.notna(ph_s) and pd.notna(pa_s):
+            score_pred = f"{int(ph_s)} - {int(pa_s)}"
+            prob_str   = f"({r['prob']:.0%})" if pd.notna(r.get("prob")) else ""
+            predicted_score = f"{score_pred} {prob_str}"
+        else:
+            predicted_score = ""
+
+        acc = _result_emoji(hs, as_, ph, pa) if (ph is not None and played) else ""
 
         row = {
-            "ID": int(r["match_id"]),
-            "Fecha": r["date"],
-            "Local": flabel(r["home_team"]),
-            "Resultado": result,
-            "Visita": flabel(r["away_team"]),
-            "Ciudad": f"{r.get('city', '')} ({r.get('country', '')})",
+            "Fecha":           r["date"],
+            "Local":           flabel(r["home_team"]),
+            "Resultado":       result if played else "—",
+            "Score predicho":  predicted_score,
+            "Visita":          flabel(r["away_team"]),
         }
         if ph is not None:
-            row["Pred. local"] = f"{ph:.0%}"
-            row["Pred. empate"] = f"{r.get('p_draw', 0):.0%}"
-            row["Pred. visita"] = f"{pa:.0%}"
+            row["% local"]  = f"{ph:.0%}"
+            row["% empate"] = f"{r.get('p_draw', 0):.0%}"
+            row["% visita"] = f"{pa:.0%}"
         if acc:
             row["✓"] = acc
         rows.append(row)

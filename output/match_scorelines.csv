@@ -1,0 +1,73 @@
+group,matchday,home_team,away_team,pred_home,pred_away,prob
+A,1,Mexico,South Africa,0,1,0.155
+A,1,Korea Republic,Czechia,1,1,0.1127
+A,2,Mexico,Korea Republic,0,1,0.135
+A,2,South Africa,Czechia,1,1,0.1247
+A,3,Mexico,Czechia,1,1,0.1259
+A,3,South Africa,Korea Republic,1,1,0.1283
+B,1,Canada,Switzerland,1,1,0.1246
+B,1,Qatar,Bosnia and Herzegovina,1,1,0.1052
+B,2,Canada,Qatar,1,0,0.1324
+B,2,Switzerland,Bosnia and Herzegovina,2,1,0.099
+B,3,Canada,Bosnia and Herzegovina,1,0,0.1378
+B,3,Switzerland,Qatar,2,1,0.0981
+C,1,Brazil,Morocco,0,1,0.2147
+C,1,Haiti,Scotland,2,1,0.0973
+C,2,Brazil,Haiti,1,1,0.1095
+C,2,Morocco,Scotland,1,0,0.1844
+C,3,Brazil,Scotland,1,0,0.1224
+C,3,Morocco,Haiti,1,0,0.172
+D,1,United States,Paraguay,1,0,0.1577
+D,1,Australia,Turkey,1,0,0.1122
+D,2,United States,Australia,0,1,0.1244
+D,2,Paraguay,Turkey,0,1,0.1423
+D,3,United States,Turkey,1,1,0.0954
+D,3,Paraguay,Australia,0,1,0.2052
+E,1,Germany,Curacao,2,1,0.0967
+E,1,Ivory Coast,Ecuador,0,0,0.251
+E,2,Germany,Ivory Coast,1,1,0.117
+E,2,Curacao,Ecuador,0,1,0.1943
+E,3,Germany,Ecuador,1,0,0.1599
+E,3,Curacao,Ivory Coast,0,1,0.1568
+F,1,Netherlands,Japan,1,1,0.1067
+F,1,Tunisia,Sweden,1,0,0.1324
+F,2,Netherlands,Tunisia,1,0,0.13
+F,2,Japan,Sweden,2,0,0.1054
+F,3,Netherlands,Sweden,2,1,0.0915
+F,3,Japan,Tunisia,1,0,0.1769
+G,1,Belgium,Egypt,1,0,0.1348
+G,1,Iran,New Zealand,1,0,0.1177
+G,2,Belgium,Iran,1,1,0.1177
+G,2,Egypt,New Zealand,1,0,0.1412
+G,3,Belgium,New Zealand,1,1,0.1004
+G,3,Egypt,Iran,0,1,0.1673
+H,1,Spain,Cabo Verde,1,0,0.1388
+H,1,Saudi Arabia,Uruguay,0,1,0.1952
+H,2,Spain,Saudi Arabia,1,0,0.1444
+H,2,Cabo Verde,Uruguay,0,0,0.1854
+H,3,Spain,Uruguay,1,0,0.1695
+H,3,Cabo Verde,Saudi Arabia,1,0,0.1631
+I,1,France,Senegal,0,1,0.1405
+I,1,Norway,Iraq,1,0,0.1353
+I,2,France,Norway,1,1,0.1022
+I,2,Senegal,Iraq,1,0,0.2048
+I,3,France,Iraq,1,0,0.1516
+I,3,Senegal,Norway,1,1,0.1223
+J,1,Argentina,Algeria,1,0,0.1775
+J,1,Austria,Jordan,1,0,0.1052
+J,2,Argentina,Austria,1,0,0.1725
+J,2,Algeria,Jordan,1,0,0.1264
+J,3,Argentina,Jordan,1,0,0.1656
+J,3,Algeria,Austria,1,0,0.1233
+K,1,Portugal,Uzbekistan,1,0,0.1408
+K,1,Colombia,Congo DR,0,0,0.1815
+K,2,Portugal,Colombia,1,1,0.1113
+K,2,Uzbekistan,Congo DR,0,0,0.247
+K,3,Portugal,Congo DR,1,0,0.1724
+K,3,Uzbekistan,Colombia,1,0,0.1482
+L,1,England,Croatia,1,0,0.1466
+L,1,Ghana,Panama,1,1,0.1202
+L,2,England,Ghana,1,0,0.1583
+L,2,Croatia,Panama,1,1,0.1119
+L,3,England,Panama,1,0,0.1546
+L,3,Croatia,Ghana,1,0,0.1165
