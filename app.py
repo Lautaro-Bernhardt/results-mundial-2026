@@ -94,6 +94,23 @@ def load_csvs() -> dict:
     return {k: pd.read_csv(v) for k, v in files.items() if os.path.exists(v)}
 
 
+FIXTURES_PATH = "data/fixtures.csv"
+
+
+def load_fixtures() -> pd.DataFrame:
+    df = pd.read_csv(FIXTURES_PATH)
+    if "home_score" not in df.columns:
+        df["home_score"] = ""
+    if "away_score" not in df.columns:
+        df["away_score"] = ""
+    return df
+
+
+def save_fixtures(df: pd.DataFrame):
+    df.to_csv(FIXTURES_PATH, index=False)
+    st.cache_data.clear()
+
+
 # ---------------------------------------------------------------------------
 # Model loading — expensive, cached for the whole session
 # ---------------------------------------------------------------------------
@@ -480,6 +497,182 @@ def tab_datos(data: dict):
 
 
 # ---------------------------------------------------------------------------
+# Tab: Resultados
+# ---------------------------------------------------------------------------
+
+STAGE_ORDER = ["group", "round_of_32", "round_of_16", "quarterfinal", "semifinal", "third_place", "final"]
+STAGE_NAMES = {
+    "group":        "Fase de Grupos",
+    "round_of_32":  "Round of 32",
+    "round_of_16":  "Octavos de Final",
+    "quarterfinal": "Cuartos de Final",
+    "semifinal":    "Semifinales",
+    "third_place":  "Tercer Puesto",
+    "final":        "Final",
+}
+
+
+def _result_emoji(hs, as_, ph, pa):
+    """Green checkmark if model favourite matches actual winner, red X otherwise."""
+    try:
+        hs, as_ = int(hs), int(as_)
+    except (ValueError, TypeError):
+        return ""
+    if hs > as_:
+        actual = "home"
+    elif hs < as_:
+        actual = "away"
+    else:
+        actual = "draw"
+    predicted = "home" if ph > pa else ("away" if pa > ph else "draw")
+    return "✅" if actual == predicted else "❌"
+
+
+def tab_resultados(data: dict):
+    st.header("📋 Fixture y Resultados")
+
+    fixtures = load_fixtures()
+    matches_pred = data.get("matches")  # pre-computed predictions
+
+    # Merge combined-model predictions into fixtures (bidirectional: handles swapped home/away)
+    if matches_pred is not None:
+        pred_combined = matches_pred[matches_pred["model"] == "combined"][
+            ["home_team", "away_team", "p_home_win", "p_draw", "p_away_win"]
+        ].copy()
+        # Forward merge
+        fixtures = fixtures.merge(pred_combined, on=["home_team", "away_team"], how="left")
+        # Reverse merge for unmatched rows (teams were stored with swapped order)
+        missing = fixtures["p_home_win"].isna()
+        if missing.any():
+            pred_rev = pred_combined.rename(columns={
+                "home_team": "away_team", "away_team": "home_team",
+                "p_home_win": "p_away_win", "p_away_win": "p_home_win",
+            })
+            filled = fixtures[missing].drop(columns=["p_home_win", "p_draw", "p_away_win"]).merge(
+                pred_rev, on=["home_team", "away_team"], how="left"
+            )
+            fixtures.loc[missing, ["p_home_win", "p_draw", "p_away_win"]] = (
+                filled[["p_home_win", "p_draw", "p_away_win"]].values
+            )
+
+    # ---- Stage filter ----
+    stages_present = [s for s in STAGE_ORDER if s in fixtures["stage"].values]
+    sel_stage = st.selectbox(
+        "Etapa",
+        stages_present,
+        format_func=lambda s: STAGE_NAMES.get(s, s),
+    )
+
+    stage_df = fixtures[fixtures["stage"] == sel_stage].copy()
+
+    # ---- Group filter (only for group stage) ----
+    if sel_stage == "group":
+        groups_present = sorted(stage_df["group"].dropna().unique())
+        sel_groups = st.multiselect("Grupos", groups_present, default=groups_present)
+        if sel_groups:
+            stage_df = stage_df[stage_df["group"].isin(sel_groups)]
+
+    # ---- Build display table ----
+    rows = []
+    for _, r in stage_df.sort_values(["date", "match_id"]).iterrows():
+        hs = r.get("home_score", "")
+        as_ = r.get("away_score", "")
+        ph = r.get("p_home_win", None)
+        pa = r.get("p_away_win", None)
+
+        # Result string
+        result = f"{int(hs)} - {int(as_)}" if (str(hs).isdigit() and str(as_).isdigit()) else "— vs —"
+
+        # Prediction accuracy emoji
+        acc = _result_emoji(hs, as_, ph, pa) if (ph is not None) else ""
+
+        row = {
+            "ID": int(r["match_id"]),
+            "Fecha": r["date"],
+            "Local": flabel(r["home_team"]),
+            "Resultado": result,
+            "Visita": flabel(r["away_team"]),
+            "Ciudad": f"{r.get('city', '')} ({r.get('country', '')})",
+        }
+        if ph is not None:
+            row["Pred. local"] = f"{ph:.0%}"
+            row["Pred. empate"] = f"{r.get('p_draw', 0):.0%}"
+            row["Pred. visita"] = f"{pa:.0%}"
+        if acc:
+            row["✓"] = acc
+        rows.append(row)
+
+    display_df = pd.DataFrame(rows)
+    st.dataframe(display_df, use_container_width=True, hide_index=True)
+
+    # ---- Score entry (group stage only) ----
+    if sel_stage == "group":
+        st.divider()
+        st.subheader("Cargar resultados")
+        st.caption("Completá los scores de los partidos jugados y guardá.")
+
+        edit_df = stage_df[["match_id", "date", "home_team", "away_team",
+                             "home_score", "away_score"]].copy()
+        edit_df = edit_df.sort_values(["date", "match_id"]).reset_index(drop=True)
+        edit_df["home_team"] = edit_df["home_team"].apply(flabel)
+        edit_df["away_team"] = edit_df["away_team"].apply(flabel)
+        edit_df = edit_df.rename(columns={
+            "match_id": "ID", "date": "Fecha",
+            "home_team": "Local", "away_team": "Visita",
+            "home_score": "Goles local", "away_score": "Goles visita",
+        })
+
+        edited = st.data_editor(
+            edit_df,
+            column_config={
+                "ID":           st.column_config.NumberColumn(disabled=True, width="small"),
+                "Fecha":        st.column_config.TextColumn(disabled=True),
+                "Local":        st.column_config.TextColumn(disabled=True),
+                "Visita":       st.column_config.TextColumn(disabled=True),
+                "Goles local":  st.column_config.NumberColumn(min_value=0, max_value=30, step=1),
+                "Goles visita": st.column_config.NumberColumn(min_value=0, max_value=30, step=1),
+            },
+            use_container_width=True,
+            hide_index=True,
+            num_rows="fixed",
+        )
+
+        if st.button("💾 Guardar resultados", type="primary"):
+            # Write back to fixtures
+            full = load_fixtures()
+            id_to_idx = {int(r["match_id"]): i for i, r in full.iterrows()}
+            for _, row in edited.iterrows():
+                idx = id_to_idx.get(int(row["ID"]))
+                if idx is not None:
+                    full.at[idx, "home_score"] = row["Goles local"] if pd.notna(row["Goles local"]) else ""
+                    full.at[idx, "away_score"] = row["Goles visita"] if pd.notna(row["Goles visita"]) else ""
+            save_fixtures(full)
+            st.success("Resultados guardados.")
+            st.rerun()
+
+    # ---- Download CSV ----
+    st.divider()
+    csv_bytes = fixtures.to_csv(index=False).encode()
+    st.download_button(
+        "⬇️ Descargar fixture completo (CSV)",
+        data=csv_bytes,
+        file_name="fixture_mundial_2026.csv",
+        mime="text/csv",
+    )
+
+    # ---- Summary: played vs pending ----
+    played = fixtures[
+        fixtures["home_score"].apply(lambda x: str(x).isdigit()) &
+        fixtures["away_score"].apply(lambda x: str(x).isdigit())
+    ]
+    pending = len(fixtures) - len(played)
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Total partidos", len(fixtures))
+    c2.metric("Jugados", len(played))
+    c3.metric("Pendientes", pending)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -493,6 +686,7 @@ def main():
     data = load_csvs()
 
     tabs = st.tabs([
+        "📋 Fixture",
         "🏆 Campeón",
         "📊 Etapas",
         "⚽ Grupos",
@@ -502,16 +696,18 @@ def main():
     ])
 
     with tabs[0]:
-        tab_campeon(data)
+        tab_resultados(data)
     with tabs[1]:
-        tab_etapas(data)
+        tab_campeon(data)
     with tabs[2]:
-        tab_grupos(data)
+        tab_etapas(data)
     with tabs[3]:
-        tab_predictor()
+        tab_grupos(data)
     with tabs[4]:
-        tab_backtest(data)
+        tab_predictor()
     with tabs[5]:
+        tab_backtest(data)
+    with tabs[6]:
         tab_datos(data)
 
 
